@@ -8,9 +8,17 @@ import PropTypes from "prop-types";
 
 import Search from "../components/Search";
 
+const App = () => {
+  return (
+    <div className="container">
+      <Search />
+    </div>
+  );
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Search name="React" />,
+    <App />,
     document.body.appendChild(document.createElement("div"))
   );
 });

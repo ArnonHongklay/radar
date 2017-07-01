@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/fake-or-dead/amadeus-ruby.git
+  revision: 8a1c8bdda4f2d5614f130b9f880371ec80603b04
+  specs:
+    swagger_client (1.0.0)
+      json (~> 1.8, >= 1.8.3)
+      typhoeus (~> 1.0, >= 1.0.1)
+
+GIT
   remote: https://github.com/rails/rails.git
   revision: d766b64b7e137955b7c7dbab51d2b6e525de47c1
   specs:
@@ -83,6 +91,8 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.6.1)
+    ethon (0.10.1)
+      ffi (>= 1.3.0)
     execjs (2.7.0)
     ffi (1.9.18)
     foreman (0.84.0)
@@ -93,6 +103,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    json (1.8.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -147,6 +158,10 @@ GEM
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
+    sprockets-es6 (0.9.2)
+      babel-source (>= 5.8.11)
+      babel-transpiler
+      sprockets (>= 3.0.0)
     sprockets-rails (3.2.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
@@ -157,6 +172,8 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
+    typhoeus (1.1.2)
+      ethon (>= 0.9.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -191,6 +208,8 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets-es6
+  swagger_client!
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

@@ -30,6 +30,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'foreman'
+gem 'swagger_client', :git => 'https://github.com/fake-or-dead/amadeus-ruby.git'
 
 gem "webpacker"
 gem "react-rails"
+gem 'sprockets-es6'

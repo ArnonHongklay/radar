@@ -18,22 +18,14 @@ export let styles = {
 
 export function matchStateToTerm(state, value) {
   return (
-    state.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-    state.abbr.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    state.label.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
+    state.value.toLowerCase().indexOf(value.toLowerCase()) !== -1
   );
 }
 
-/**
- * An example of how to implement a relevancy-based sorting method. States are
- * sorted based on the location of the match - For example, a search for "or"
- * will return "Oregon" before "North Carolina" even though "North Carolina"
- * would normally sort above Oregon. Strings where the match is in the same
- * location (or there is no match) will be sorted alphabetically - For example,
- * a search for "or" would return "North Carolina" above "North Dakota".
- */
 export function sortStates(a, b, value) {
-  const aLower = a.name.toLowerCase();
-  const bLower = b.name.toLowerCase();
+  const aLower = a.label.toLowerCase();
+  const bLower = b.label.toLowerCase();
   const valueLower = value.toLowerCase();
   const queryPosA = aLower.indexOf(valueLower);
   const queryPosB = bLower.indexOf(valueLower);
@@ -54,56 +46,74 @@ export function fakeRequest(value, cb) {
 }
 
 export function getStates() {
-  return [
-    { abbr: "AL", name: "Alabama" },
-    { abbr: "AK", name: "Alaska" },
-    { abbr: "AZ", name: "Arizona" },
-    { abbr: "AR", name: "Arkansas" },
-    { abbr: "CA", name: "California" },
-    { abbr: "CO", name: "Colorado" },
-    { abbr: "CT", name: "Connecticut" },
-    { abbr: "DE", name: "Delaware" },
-    { abbr: "FL", name: "Florida" },
-    { abbr: "GA", name: "Georgia" },
-    { abbr: "HI", name: "Hawaii" },
-    { abbr: "ID", name: "Idaho" },
-    { abbr: "IL", name: "Illinois" },
-    { abbr: "IN", name: "Indiana" },
-    { abbr: "IA", name: "Iowa" },
-    { abbr: "KS", name: "Kansas" },
-    { abbr: "KY", name: "Kentucky" },
-    { abbr: "LA", name: "Louisiana" },
-    { abbr: "ME", name: "Maine" },
-    { abbr: "MD", name: "Maryland" },
-    { abbr: "MA", name: "Massachusetts" },
-    { abbr: "MI", name: "Michigan" },
-    { abbr: "MN", name: "Minnesota" },
-    { abbr: "MS", name: "Mississippi" },
-    { abbr: "MO", name: "Missouri" },
-    { abbr: "MT", name: "Montana" },
-    { abbr: "NE", name: "Nebraska" },
-    { abbr: "NV", name: "Nevada" },
-    { abbr: "NH", name: "New Hampshire" },
-    { abbr: "NJ", name: "New Jersey" },
-    { abbr: "NM", name: "New Mexico" },
-    { abbr: "NY", name: "New York" },
-    { abbr: "NC", name: "North Carolina" },
-    { abbr: "ND", name: "North Dakota" },
-    { abbr: "OH", name: "Ohio" },
-    { abbr: "OK", name: "Oklahoma" },
-    { abbr: "OR", name: "Oregon" },
-    { abbr: "PA", name: "Pennsylvania" },
-    { abbr: "RI", name: "Rhode Island" },
-    { abbr: "SC", name: "South Carolina" },
-    { abbr: "SD", name: "South Dakota" },
-    { abbr: "TN", name: "Tennessee" },
-    { abbr: "TX", name: "Texas" },
-    { abbr: "UT", name: "Utah" },
-    { abbr: "VT", name: "Vermont" },
-    { abbr: "VA", name: "Virginia" },
-    { abbr: "WA", name: "Washington" },
-    { abbr: "WV", name: "West Virginia" },
-    { abbr: "WI", name: "Wisconsin" },
-    { abbr: "WY", name: "Wyoming" }
-  ];
+  console.log(fetchAmadeusAutoCompleteAPI("a"));
+  // return fetchAmadeusAutoCompleteAPI("a");
+
+  // return [
+  //   { value: "AL", label: "Alabama" },
+  //   { value: "AK", label: "Alaska" },
+  //   { value: "AZ", label: "Arizona" },
+  //   { value: "AR", label: "Arkansas" },
+  //   { value: "CA", label: "California" },
+  //   { value: "CO", label: "Colorado" },
+  //   { value: "CT", label: "Connecticut" },
+  //   { value: "DE", label: "Delaware" },
+  //   { value: "FL", label: "Florida" },
+  //   { value: "GA", label: "Georgia" },
+  //   { value: "HI", label: "Hawaii" },
+  //   { value: "ID", label: "Idaho" },
+  //   { value: "IL", label: "Illinois" },
+  //   { value: "IN", label: "Indiana" },
+  //   { value: "IA", label: "Iowa" },
+  //   { value: "KS", label: "Kansas" },
+  //   { value: "KY", label: "Kentucky" },
+  //   { value: "LA", label: "Louisiana" },
+  //   { value: "ME", label: "Maine" },
+  //   { value: "MD", label: "Maryland" },
+  //   { value: "MA", label: "Massachusetts" },
+  //   { value: "MI", label: "Michigan" },
+  //   { value: "MN", label: "Minnesota" },
+  //   { value: "MS", label: "Mississippi" },
+  //   { value: "MO", label: "Missouri" },
+  //   { value: "MT", label: "Montana" },
+  //   { value: "NE", label: "Nebraska" },
+  //   { value: "NV", label: "Nevada" },
+  //   { value: "NH", label: "New Hampshire" },
+  //   { value: "NJ", label: "New Jersey" },
+  //   { value: "NM", label: "New Mexico" },
+  //   { value: "NY", label: "New York" },
+  //   { value: "NC", label: "North Carolina" },
+  //   { value: "ND", label: "North Dakota" },
+  //   { value: "OH", label: "Ohio" },
+  //   { value: "OK", label: "Oklahoma" },
+  //   { value: "OR", label: "Oregon" },
+  //   { value: "PA", label: "Pennsylvania" },
+  //   { value: "RI", label: "Rhode Island" },
+  //   { value: "SC", label: "South Carolina" },
+  //   { value: "SD", label: "South Dakota" },
+  //   { value: "TN", label: "Tennessee" },
+  //   { value: "TX", label: "Texas" },
+  //   { value: "UT", label: "Utah" },
+  //   { value: "VT", label: "Vermont" },
+  //   { value: "VA", label: "Virginia" },
+  //   { value: "WA", label: "Washington" },
+  //   { value: "WV", label: "West Virginia" },
+  //   { value: "WI", label: "Wisconsin" },
+  //   { value: "WY", label: "Wyoming" }
+  // ];
+}
+
+export function getAutoComplete() {
+  return [{ label: "xx", value: "yy" }];
+}
+
+export function fetchAmadeusAutoCompleteAPI(msg) {
+  let token = "bUe60BHjxhdts81QJRHmOCT2lyszowVT";
+  return fetch(
+    `https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=${token}&term=${msg}`
+  )
+    .then(response => response.json())
+    .then(function(parsedData) {
+      console.log(parsedData);
+    });
 }

@@ -1,59 +1,57 @@
 import React from "react";
-import DOM from "react-dom";
+import PropTypes from "prop-types";
+import momentPropTypes from "react-moment-proptypes";
+import moment from "moment";
 import Autocomplete from "react-autocomplete";
-import { getStates, styles, fakeRequest } from "../api";
+import {
+  getStates,
+  styles,
+  fakeRequest,
+  fetchAmadeusAutoCompleteAPI,
+  getAutoComplete
+} from "../api";
+
+import DateRangePickerWrapper from "./DateRangePickerWrapper";
+
+import "react-dates/lib/css/_datepicker.css";
 
 export default class Search extends React.Component {
-  state = {
-    value: "",
-    unitedStates: getStates()
-  };
-
   render() {
     return (
-      <div>
-        <div className="row">
-          <div className="col-sm-12">
-            <h1>Softbot - Radar</h1>
-            {/* <p>
-              Autocomplete works great with async data by allowing you to pass
-              in
-              items. The <code>onChange</code> event provides you the value to
-              make
-              a server request with, then change state and pass in new items, it
-              will
-              attempt to autocomplete the first one.
-            </p> */}
-            <label htmlFor="states-autocomplete">
-              Choose a state from the US
+      <div className="row">
+        <div className="col-sm-12">
+          <h1>Async Data</h1>
+          <label htmlFor="states-autocomplete">
+            Choose a state from the US
+          </label>
+
+          <form className="form-inline">
+            <label className="sr-only" htmlFor="from">
+              Name
             </label>
-            {" "}
-            <Autocomplete
-              inputProps={{ id: "states-autocomplete" }}
-              value={this.state.value}
-              items={this.state.unitedStates}
-              getItemValue={item => item.name}
-              onSelect={(value, item) => {
-                // set the menu to only the selected item
-                this.setState({ value, unitedStates: [item] });
-                // or you could reset it to a default list again
-                // this.setState({ unitedStates: getStates() })
-              }}
-              onChange={(event, value) => {
-                this.setState({ value });
-                fakeRequest(value, items => {
-                  this.setState({ unitedStates: items });
-                });
-              }}
-              renderItem={(item, isHighlighted) =>
-                <div
-                  style={isHighlighted ? styles.highlightedItem : styles.item}
-                  key={item.abbr}
-                >
-                  {item.name}
-                </div>}
+            <input
+              type="text"
+              className="form-control mb-2 mr-sm-2 mb-sm-0"
+              id="from"
+              placeholder="From: City or Airport"
             />
-          </div>
+
+            <label className="sr-only" htmlFor="to">
+              Username
+            </label>
+            <input
+              type="text"
+              className="form-control mb-2 mr-sm-2 mb-sm-0"
+              id="to"
+              placeholder="To: City or Airport"
+            />
+
+            <DateRangePickerWrapper />
+
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     );
