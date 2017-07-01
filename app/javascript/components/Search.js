@@ -11,7 +11,7 @@ import {
   getAutoComplete
 } from "../api";
 
-import DateRangePickerWrapper from "./DateRangePickerWrapper";
+// import DateRangePickerWrapper from "./DateRangePickerWrapper";
 
 import "react-dates/lib/css/_datepicker.css";
 
@@ -45,8 +45,6 @@ export default class Search extends React.Component {
               id="to"
               placeholder="To: City or Airport"
             />
-
-            <DateRangePickerWrapper />
 
             <button type="submit" className="btn btn-primary">
               Submit

@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-const Hi = props => <div>Hi {props.name}!</div>;
+const Hi = props =>
+  <div>
+    Hi {props.name}!
+  </div>;
 
 Hi.defaultProps = {
   name: "David"
